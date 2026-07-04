@@ -45,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default App;
+export default Navbar;
