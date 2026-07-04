@@ -1,3 +1,13 @@
+// Внутри navbar.js
+const Navbar = () => {
+  return (
+    <div>
+      <h2 style={{ color: 'red' }}>КОМПОНЕНТ NAVBAR ЗАГРУЗИЛСЯ!</h2>
+      {/* Тут ваш компонент <Menu ... /> */}
+    </div>
+  );
+};
+
 import React from 'react';
 import { Menu } from 'antd';
 import { HomeOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
