@@ -25,7 +25,7 @@ const items = [
   },
 ];
 
-const App = () => {
+const Navbar = () => {
   // 2. Функция обработки клика
   const onClick = (e) => {
     console.log('Выбран пункт:', e.key);
