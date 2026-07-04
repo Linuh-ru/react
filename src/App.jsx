@@ -11,7 +11,7 @@ export default App
 
 import React from 'react';
 // 1. Импортируем ваш новый компонент (путь зависит от структуры папок)
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
