@@ -59,7 +59,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 10px solid var(--border);
+  border-inline: 0px solid var(--border); /* убрал 2 линии по бокам, которые были по умолчанию у react */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
