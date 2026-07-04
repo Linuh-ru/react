@@ -1,14 +1,3 @@
-function App() {
-  return (
-    <div>
-      <h1>Привет, мир!</h1>
-      <p>Это мой собственный проект на React.</p>
-    </div>
-  )
-}
-
-export default App
-
 import React from 'react';
 // 1. Импортируем ваш новый компонент (путь зависит от структуры папок)
 import Navbar from './components/Navbar';
@@ -25,6 +14,15 @@ function App() {
       </main>
     </div>
   );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Привет, мир!</h1>
+      <p>Это мой собственный проект на React.</p>
+    </div>
+  )
 }
 
 export default App;
