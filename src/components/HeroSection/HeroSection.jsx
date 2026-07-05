@@ -44,7 +44,7 @@ const HeroSection = () => {
     alt="Главное изображение" 
     style={{ 
       width: '100%', 
-      maxWidth: '350px', 
+      maxWidth: '50px', 
       borderRadius: token.borderRadiusLG, 
       boxShadow: '0 12px 32px rgba(0, 0, 0, 0.06)' 
     }} 
