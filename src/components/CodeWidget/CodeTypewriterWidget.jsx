@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
+{/*
 const DEFAULT_CODE_LINES = [
   `const project = new SmartApp();\nproject.init({ techStack: ["Vue", "Node.js"] });`,
+  `function deploy() {\n  return database.connect().then(() => "Live");\n}`
+];
+*/}
+const DEFAULT_CODE_LINES = [
+  `API_HOST = "linuh.ru"
+  API_PATH = "/predict"
+  def predict(input_data):
+  result = perform_inference(input)`,
   `function deploy() {\n  return database.connect().then(() => "Live");\n}`
 ];
 
