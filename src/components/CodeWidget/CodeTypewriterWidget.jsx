@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './CodeTypewriterWidget.css'; 
 
 const DEFAULT_CODE_LINES = [
   `const project = new SmartApp();\nproject.init({ techStack: ["Vue", "Node.js"] });`,
@@ -15,11 +14,8 @@ export default function CodeTypewriterWidget({
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  // Добавляем JS-стейт для мигания курсора вместо CSS-анимации
   const [cursorVisible, setCursorVisible] = useState(true);
 
-  // Эффект печатной машинки
   useEffect(() => {
     let timer;
     const currentFullText = codeLines[lineIndex];
@@ -43,7 +39,6 @@ export default function CodeTypewriterWidget({
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, lineIndex, codeLines, speed, delay]);
 
-  // Эффект мигания курсора (каждые 530мс переключаем видимость)
   useEffect(() => {
     const cursorTimer = setInterval(() => {
       setCursorVisible((prev) => !prev);
@@ -52,14 +47,28 @@ export default function CodeTypewriterWidget({
   }, []);
 
   return (
-    <div className="widget-container" style={{ display: 'flex', width: '100%', minHeight: '140px', background: 'transparent', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-      <div className="widget-content" style={{ width: '100%' }}>
-        <div className="code-box" style={{ background: '#1e1e23', color: '#a9dc76', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '8px', padding: '20px', fontFamily: "'Courier New', Courier, monospace", fontSize: '0.95rem', textAlign: 'left', whiteSpace: 'pre-wrap', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)' }}>
-          <span>{currentText}</span>
-          {/* Управляем прозрачностью курсора через инлайн-стиль opacity */}
-          <span className="cursor" style={{ color: '#fc9867', fontWeight: 'bold', opacity: cursorVisible ? 1 : 0, transition: 'opacity 0.1s ease-in-out' }}>|</span>
-        </div>
-      </div>
+    <div style={{ 
+      position: 'absolute',          // Абсолютное позиционирование поверх фото
+      bottom: '-40px',               // Наплыв снизу на фотографию
+      left: '50%',                   // Центрирование относительно фото
+      transform: 'translateX(-50%)', 
+      width: '90%',                  
+      maxWidth: '400px',             
+      zIndex: 10,                    
+      background: '#1e1e23', 
+      color: '#a9dc76', 
+      borderRadius: '8px',
+      padding: '16px',
+      fontFamily: "'Courier New', Courier, monospace",
+      fontSize: '0.9rem',
+      textAlign: 'left',
+      whiteSpace: 'pre-wrap',
+      minHeight: '90px',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+      border: '1px solid rgba(255, 255, 255, 0.1)'
+    }}>
+      <span>{currentText}</span>
+      <span style={{ color: '#fc9867', fontWeight: 'bold', opacity: cursorVisible ? 1 : 0, transition: 'opacity 0.1s ease-in-out' }}>|</span>
     </div>
   );
 }
