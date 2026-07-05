@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection/HeroSection.jsx'; 
 import Sidebar from './components/Sidebar/Sidebar.jsx'; 
 import CodeTypewriterWidget from './components/CodeWidget/CodeTypewriterWidget.jsx'; 
+import LocalAiChat from './components/Ai/LocalAiChat.jsx'; 
 
 function App() {
   return (
@@ -13,21 +14,22 @@ function App() {
       {/* Главный экран (текст слева, фото справа) */}
       <HeroSection />
 
-      {/* Обертка для виджета с кодом, которая центрирует его и поднимает наверх */}
-      {/* <div style={{ 
-        maxWidth: '1000px',      // Ограничиваем ширину виджета, чтобы он был по центру
-        margin: '-290px auto 0 auto', // Минус 90px сверху заставляет его наехать на HeroSection
-        padding: '0 24px',       // Отступы по бокам для мобильных устройств
-        position: 'relative',    // Включаем слой позиционирования
-        zIndex: 10               // Поднимает виджет над текстом и картинкой
-      }}>
-        <CodeTypewriterWidget />
-      </div> */}
-      
       {/* Сайдбар (кнопка и само выезжающее меню) */}
       {/* <Sidebar /> */} 
 
-      {/* Ниже вы можете добавлять любые другие секции главной страницы */}
+      {/* ИИ для Linux */}
+      {/* НАЧАЛО ОБЕРТКИ */}
+      <div style={{ 
+        width: '100%', 
+        backgroundColor: '#ffffff', // Принудительный белый фон для всей строки
+        padding: '20px 0',          // Отступы сверху и снизу
+        position: 'relative', 
+        zIndex: 100                 // Поднимаем над бежевым фоном HeroSection
+      }}>
+        <LocalAiChat />
+      </div>
+      {/* КОНЕЦ ОБЕРТКИ */}
+
     </div>
   );
 }

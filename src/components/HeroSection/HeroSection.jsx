@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Typography, Button, theme } from 'antd';
 import "./HeroSection.css";
 import myPhoto from '/src/assets/main-photo.png'; 
-import CodeTypewriterWidget from '../CodeWidget/CodeTypewriterWidget.jsx'; // Проверьте правильность этого пути
+import CodeTypewriterWidget from '../CodeWidget/CodeTypewriterWidget.jsx'; // Проверьте правильность этого пути!
 
 const { Title, Paragraph } = Typography;
 
@@ -11,7 +11,7 @@ const HeroSection = () => {
 
   return (
     <div style={{ 
-      padding: '80px 24px 120px 24px', // Увеличили нижний паддинг, чтобы наезжающий виджет не обрезался снизу секции
+      padding: '80px 24px 160px 24px', // Увеличили нижний отступ, чтобы наплывающий виджет не вылетал из секции
       backgroundColor: token.colorBgContainer,
       position: 'relative' 
     }}>
@@ -45,7 +45,7 @@ const HeroSection = () => {
                 boxShadow: '0 12px 32px rgba(0, 0, 0, 0.06)' 
               }} 
             />
-            {/* Вызываем виджет, стили абсолютного позиционирования применят наплыв прямо поверх фото */}
+            {/* Рендерим виджет. Вся логика currentText инкапсулирована внутри него и не видна для HeroSection */}
             <CodeTypewriterWidget />
           </Col>
 

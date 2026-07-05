@@ -49,13 +49,21 @@ export default function CodeTypewriterWidget({
   return (
     <div style={{ 
       position: 'absolute',          // Абсолютное позиционирование поверх фото
-      bottom: '-40px',               // Наплыв снизу на фотографию
-      left: '50%',                   // Центрирование относительно фото
-      transform: 'translateX(-50%)', 
+      bottom: '-10px',               // Наплыв снизу на фотографию
+      left: '30%',                   // ИСПРАВЛЕНО: Сдвинули точку привязки влево
+      transform: 'translateX(-50%)', // Оставляем для сохранения внутренней оси центрирования
       width: '90%',                  
       maxWidth: '400px',             
-      zIndex: 10,                    
-      background: '#1e1e23', 
+      zIndex: 10, 
+      
+      /* --- ВОЗВРАЩАЕМ ПРОЗРАЧНОСТЬ И ЭФФЕКТ МАТОВОГО СТЕКЛА --- */
+      background: 'rgba(30, 30, 35, 0.45)', // Полупрозрачный темный фон (45% непрозрачности)
+      backdropFilter: 'blur(8px)',          // Размытие элементов, которые оказались ПОД плашкой
+      WebkitBackdropFilter: 'blur(8px)',    // Поддержка размытия для браузеров Safari (Apple)
+      border: '1px solid rgba(255, 255, 255, 0.15)', // Чуть более заметная аккуратная светлая рамка
+      /* -------------------------------------------------------- */
+
+      /* background: '#1e1e23', */
       color: '#a9dc76', 
       borderRadius: '8px',
       padding: '16px',
