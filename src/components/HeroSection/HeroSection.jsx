@@ -41,9 +41,10 @@ const HeroSection = () => {
           </Col>
 
           {/* ВСТАВКА ВИДЖЕТА СНИЗУ НА ВСЮ ШИРИНУ (24 колонки) */}
-          <Col xs={24} style={{ marginTop: '-150px' }}>
+          {/*<Col xs={24} style={{ marginTop: '-150px' }}>
             <CodeTypewriterWidget />
-          </Col>
+          </Col>*/}
+            <CodeTypewriterWidget />
 
         </Row>
       </div>
