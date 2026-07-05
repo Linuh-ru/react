@@ -67,7 +67,7 @@ const HeroSection = () => {
     fontSize: '0.9rem',
     textAlign: 'left',
     whiteSpace: 'pre-wrap',
-    minHeight: '90px',
+    minHeight: '290px',
     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)', // Глубокая тень для эффекта парения
     border: '1px solid rgba(255, 255, 255, 0.1)'
   }}>
