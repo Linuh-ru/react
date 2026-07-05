@@ -50,20 +50,44 @@ export default function CodeTypewriterWidget({
   }, [charIndex, isDeleting, lineIndex, codeLines, speed, delay]);
 
   return (
-    <div className="widget-container">
-      {/* Фоновое изображение и оверлей удалены */}
-      
+    <div 
+      className="widget-container" 
+      style={{ 
+        display: 'flex !important', // Гарантируем, что блок отображается
+        visibility: 'visible !important', 
+        width: '100%', 
+        minHeight: '120px',          // Принудительно задаем высоту, чтобы блок не схлопывался в 0px
+        position: 'relative',
+        background: 'transparent',  // Убираем фоны, чтобы не было бежевого/черного
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '15px'            // Небольшой отступ сверху
+      }}
+    >
       {/* Основной контент */}
-      <div className="widget-content">
-        {/* <h1 className="widget-title">{title}</h1> */}
-        {/* <p className="widget-subtitle">{subtitle}</p> */}
+      <div className="widget-content" style={{ width: '100%', position: 'relative', zIndex: 3 }}>
         
         {/* Контейнер для бегущего кода */}
-        <div className="code-box">
+        <div 
+          className="code-box" 
+          style={{ 
+            background: '#1e1e23',         // Жестко задаем темный фон для контраста
+            color: '#a9dc76',              // Жестко задаем цвет букв кода (зеленоватый)
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '8px',
+            padding: '20px',
+            fontFamily: "'Courier New', Courier, monospace",
+            fontSize: '0.95rem',
+            textAlign: 'left',
+            whiteSpace: 'pre-wrap',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
+          }}
+        >
           <span>{currentText}</span>
-          <span className="cursor">|</span>
+          <span className="cursor" style={{ color: '#fc9867', fontWeight: 'bold' }}>|</span>
         </div>
       </div>
     </div>
   );
+
 }
