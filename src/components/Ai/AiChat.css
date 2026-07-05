@@ -32,8 +32,18 @@
 
 .ai-textarea:focus {
   outline: none;
+  border-color: #b0b0b0; /* Делаем саму рамку чуть темнее при клике */
+  
+  /* ЭФФЕКТ ВДАВЛЕННОСТИ: 
+     inset — направляет тень внутрь элемента, 
+     первые три цифры (0 3px 6px) — смещение и размытие тени,
+     последняя — прозрачность серого цвета */
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1); 
+  /*
+  outline: none;
   border-color: #4a90e2;
   box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.15);
+  */
 }
 
 .ai-button {

@@ -3,6 +3,7 @@ import { Row, Col, Typography, Button, theme } from 'antd';
 import "./HeroSection.css";
 import myPhoto from '/src/assets/main-photo.png'; 
 import CodeTypewriterWidget from '../CodeWidget/CodeTypewriterWidget.jsx'; // Проверьте правильность этого пути!
+import textBg from '/src/assets/text-bg.png'; // Фоновая картинка текста слева
 
 const { Title, Paragraph } = Typography;
 
@@ -20,18 +21,57 @@ const HeroSection = () => {
           
           {/* ТЕКСТ СЛЕВА */}
           <Col xs={24} md={12}>
-            <Typography>
-              <Title level={1} style={{ marginTop: 0, marginBottom: token.marginMD, fontWeight: 700 }}>
-                Всем привет! Меня зовут Александр Омаров.
-              </Title>
-              <Paragraph style={{ fontSize: '18px', color: token.colorTextDescription, marginBottom: token.marginLG, lineHeight: '1.6' }}>
-                Я главный инженер в банке ВТБ. Ниже разработанный мной искусственный интеллект для Linux.
-              </Paragraph>
-              <Button type="primary" size="large">
-                Попробовать
-              </Button>
-            </Typography>
+            {/* Контейнер-родитель, задающий рамки для абсолютных координат картинки */}
+            <div style={{
+              position: 'relative', // КРИТИЧЕСКИ ВАЖНО: картинка будет позиционироваться внутри этого блока
+              /*
+              padding: '30px',
+              borderRadius: token.borderRadiusLG,
+              overflow: 'hidden',   // Чтобы картинка не вылезала за скругленные края блока
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+              border: '1px solid rgba(0, 0, 0, 0.05)',
+              backgroundColor: token.colorBgContainer // Базовый фон подложки
+              */
+            }}>
+
+              {/* КАРТИНКА С АБСОЛЮТНЫМ ПОЗИЦИОНИРОВАНИЕМ */}
+              <img
+                src={textBg}
+                alt="Фон текста"
+                style={{
+                  position: 'absolute',
+                  // --- КООРДИНАТЫ: меняйте их, чтобы двигать картинку ---
+                  top: '-75px',         // Дистанция от верхнего края текста
+                  left: '-180px',        // Дистанция от левого края текста
+                  width: '100%',      // Ширина картинки (можно задать в px, например '200px')
+                  height: '380px',     // Высота картинки (можно задать в px, например '150px')
+                  // ----------------------------------------------------
+                  /* --- ИСПРАВЛЕНО: Картинка больше не обрезается --- */
+                  objectFit: 'contain', // Картинка целиком впишется в размеры текстового поля
+                  opacity: 0.09,      // Прозрачность самой картинки (0.15 = 15% видимости, текст будет отлично читаться)
+                  zIndex: 1,          // Отправляем картинку на самый нижний слой
+                  pointerEvents: 'none' // Чтобы картинка не мешала выделять текст мышкой
+                }}
+              />
+
+              {/* ТЕКСТОВЫЙ КОНТЕНТ (Обязательно zIndex: 2, чтобы быть ПОВЕРХ картинки) */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <Typography>
+                  <Title level={1} style={{ marginTop: 0, marginBottom: token.marginMD, fontWeight: 700 }}>
+                    Всем привет! Меня зовут Александр Омаров.
+                  </Title>
+                  <Paragraph style={{ fontSize: '18px', color: token.colorTextDescription, marginBottom: token.marginLG, lineHeight: '1.6' }}>
+                    Я главный инженер в банке ВТБ. Ниже разработанный мной искусственный интеллект для Linux.
+                  </Paragraph>
+                  <Button type="primary" size="large">
+                    Попробовать
+                  </Button>
+                </Typography>
+              </div>
+
+            </div>
           </Col>
+
 
           {/* ФОТО СПРАВА С ПРИВЯЗАННЫМ ВИДЖЕТОМ */}
           <Col xs={24} md={12} style={{ textAlign: 'center', position: 'relative' }}>

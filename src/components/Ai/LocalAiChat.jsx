@@ -36,7 +36,7 @@ function LocalAiChat() {
 
   return (
     <div className="ai-container">
-      <h2 className="ai-title">Локальный ИИ Ассистент</h2>
+      <h2 className="ai-title">ИИ Ассистент для Linux</h2>
       
       <textarea
         className="ai-textarea"
