@@ -68,7 +68,8 @@
   backdrop-filter: blur(5px);
 }
 
-.cursor {
+/* УДАЛИТЕ ЭТОТ БЛОК ИЗ ВАШЕГО CSS ФАЙЛА, ОН БОЛЬШЕ НЕ НУЖЕН */
+/*.cursor {
   color: #fc9867;
   font-weight: bold;
   animation: widget-blink 0.7s infinite;
@@ -77,4 +78,4 @@
 @keyframes widget-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-}
+}*/
