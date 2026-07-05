@@ -67,15 +67,3 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
 }
-
-/* УДАЛИТЕ ЭТОТ БЛОК ИЗ ВАШЕГО CSS ФАЙЛА, ОН БОЛЬШЕ НЕ НУЖЕН */
-/*.cursor {
-  color: #fc9867;
-  font-weight: bold;
-  animation: widget-blink 0.7s infinite;
-}
-
-@keyframes widget-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}*/
