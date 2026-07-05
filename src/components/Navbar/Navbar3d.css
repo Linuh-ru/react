@@ -1,0 +1,89 @@
+/* Контейнер всей шапки */
+.navbar-3d-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    background: linear-gradient(145deg, #ffffff, #f0f2f5) !important;
+    /* Объёмный градиент */
+    border-radius: 16px;
+    margin: 15px;
+
+    /* Основная 3D-тень для всего навбара */
+    box-shadow: 6px 6px 16px rgba(163, 177, 198, 0.4),
+        -6px -6px 16px rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    transition: all 0.3s ease;
+}
+
+/* Логотип-блок */
+.logo-3d {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    background: #ffffff;
+    padding: 6px 16px;
+    border-radius: 10px;
+    /* Эффект выдавленной кнопки для логотипа */
+    box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.3),
+        -3px -3px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Кастомизация самого Ant Design Menu */
+.menu-3d {
+    flex: 1;
+    background: transparent !important;
+    /* Убираем дефолтный белый фон */
+    border-bottom: none !important;
+    display: flex;
+    gap: 12px;
+    /* Расстояние между кнопками */
+}
+
+/* Каждый пункт меню превращаем в 3D-плитку */
+.menu-3d .ant-menu-item,
+.menu-3d .ant-menu-submenu-title {
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /* Эффект легкого объема для кнопок */
+    box-shadow: 3px 3px 6px rgba(163, 177, 198, 0.3),
+        -3px -3px 6px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Убираем дефолтные синие подчеркивания Ant Design */
+.menu-3d .ant-menu-item::after,
+.menu-3d .ant-menu-submenu::after {
+    display: none !important;
+}
+
+/* Эффект при наведении на пункт меню (кнопка приподнимается) */
+.menu-3d .ant-menu-item:hover,
+.menu-3d .ant-menu-submenu-title:hover {
+    color: #1677ff !important;
+    transform: translateY(-3px) !important;
+    /* Физический подъем вверх */
+
+    /* Тень становится глубже, имитируя отрыв от поверхности */
+    box-shadow: 4px 7px 12px rgba(163, 177, 198, 0.5),
+        -4px -4px 12px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Активный/выбранный пункт меню (эффект вдавливания вовнутрь) */
+.menu-3d .ant-menu-item-selected,
+.menu-3d .ant-menu-submenu-selected .ant-menu-submenu-title {
+    color: #1677ff !important;
+    background: #f0f2f5 !important;
+    transform: translateY(1px) !important;
+    /* Кнопка уходит вниз */
+
+    /* Внутренние тени (inset) создают иллюзию проваливания */
+    box-shadow: inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8) !important;
+}

@@ -36,13 +36,16 @@ function LocalAiChat() {
 
   return (
     <div className="ai-container">
-      <h2 className="ai-title">ИИ Ассистент для Linux</h2>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img src="/logo.png" alt="Logo" style={{ height: '42px', marginRight: '8px' }} />
+        <h2 className="ai-title" style={{ margin: 0 }}>Linuh AI</h2>
+      </div>
       
       <textarea
         className="ai-textarea"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Введите ваш вопрос..."
+        placeholder="Введите ваш вопрос про linux..."
       />
       
       <button 

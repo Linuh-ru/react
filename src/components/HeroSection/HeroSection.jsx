@@ -61,7 +61,7 @@ const HeroSection = () => {
                     Всем привет! Меня зовут Александр Омаров.
                   </Title>
                   <Paragraph style={{ fontSize: '18px', color: token.colorTextDescription, marginBottom: token.marginLG, lineHeight: '1.6' }}>
-                    Я главный инженер в банке ВТБ. Ниже разработанный мной искусственный интеллект для Linux.
+                    Я главный инженер в банке ВТБ. Ниже созданный мной искусственный интеллект для Linux.
                   </Paragraph>
                   <Button type="primary" size="large">
                     Попробовать
