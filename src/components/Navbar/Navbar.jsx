@@ -93,7 +93,7 @@ const Navbar = () => {
 
       {/* ЛИНК-КНОПКА GITHUB В СТИЛЕ 3D */}
       <a
-        href="https://github.com"
+        href="https://github.com/Linuh-ru/react"
         target="_blank"
         rel="noopener noreferrer"
         style={{
