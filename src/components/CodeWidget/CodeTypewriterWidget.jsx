@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CodeTypewriterWidget.css'; // Импорт стилей
-import myPhoto from '../../assets/react.svg'; // ИСПРАВЛЕНО: 2 уровня вверх
+import './CodeTypewriterWidget.css'; 
 
 const DEFAULT_CODE_LINES = [
   `const project = new SmartApp();\nproject.init({ techStack: ["Vue", "Node.js"] });`,
@@ -9,9 +8,7 @@ const DEFAULT_CODE_LINES = [
 ];
 
 export default function CodeTypewriterWidget({
-  title = "Создаем Будущее",
-  subtitle = "Инновационные ИТ-решения для вашего бизнеса",
-  bgImage = myPhoto, // 2. ИСПРАВЛЕНО: Правильно задаем локальное фото по умолчанию
+  // Защищаем пропсы: если они придут пустыми извне, жестко берем дефолтные значения
   codeLines = DEFAULT_CODE_LINES,
   speed = 40,
   delay = 2500
@@ -22,26 +19,27 @@ export default function CodeTypewriterWidget({
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    // ЗАЩИТА: Проверяем, что массив существует и в нем есть строки
+    if (!codeLines || !codeLines[lineIndex]) {
+      return; 
+    }
+
     let timer;
     const currentFullText = codeLines[lineIndex];
 
     if (!isDeleting && charIndex < currentFullText.length) {
-      // Режим печати букв
       timer = setTimeout(() => {
         setCurrentText((prev) => prev + currentFullText.charAt(charIndex));
         setCharIndex((prev) => prev + 1);
       }, speed);
     } else if (!isDeleting && charIndex === currentFullText.length) {
-      // Пауза после того, как строка напечаталась целиком
       timer = setTimeout(() => setIsDeleting(true), delay);
     } else if (isDeleting && charIndex > 0) {
-      // Режим удаления букв (в два раза быстрее печати)
       timer = setTimeout(() => {
         setCurrentText((prev) => prev.slice(0, -1));
         setCharIndex((prev) => prev - 1);
       }, speed / 2);
     } else if (isDeleting && charIndex === 0) {
-      // Переключение на следующую строку после полного удаления
       setIsDeleting(false);
       setLineIndex((prev) => (prev + 1) % codeLines.length);
     }
@@ -49,30 +47,31 @@ export default function CodeTypewriterWidget({
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, lineIndex, codeLines, speed, delay]);
 
+  // ЗАЩИТА СБОРКИ: Если массив пуст, не ломаем страницу, а рендерим пустое темное окно
+  const safeLines = codeLines && codeLines.length > 0 ? codeLines : DEFAULT_CODE_LINES;
+  const currentFullText = safeLines[lineIndex] || '';
+
   return (
     <div 
       className="widget-container" 
       style={{ 
-        display: 'flex !important', // Гарантируем, что блок отображается
-        visibility: 'visible !important', 
+        display: 'flex', 
         width: '100%', 
-        minHeight: '120px',          // Принудительно задаем высоту, чтобы блок не схлопывался в 0px
+        minHeight: '140px', 
         position: 'relative',
-        background: 'transparent',  // Убираем фоны, чтобы не было бежевого/черного
+        background: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '15px'            // Небольшой отступ сверху
+        marginTop: '20px',
+        marginBottom: '20px'
       }}
     >
-      {/* Основной контент */}
       <div className="widget-content" style={{ width: '100%', position: 'relative', zIndex: 3 }}>
-        
-        {/* Контейнер для бегущего кода */}
         <div 
           className="code-box" 
           style={{ 
-            background: '#1e1e23',         // Жестко задаем темный фон для контраста
-            color: '#a9dc76',              // Жестко задаем цвет букв кода (зеленоватый)
+            background: '#1e1e23', 
+            color: '#a9dc76', 
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '8px',
             padding: '20px',
@@ -80,14 +79,15 @@ export default function CodeTypewriterWidget({
             fontSize: '0.95rem',
             textAlign: 'left',
             whiteSpace: 'pre-wrap',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)'
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+            minHeight: '100px'
           }}
         >
-          <span>{currentText}</span>
+          {/* Если анимация еще не пошла, покажем хотя бы первый символ или заглушку */}
+          <span>{currentText || ''}</span>
           <span className="cursor" style={{ color: '#fc9867', fontWeight: 'bold' }}>|</span>
         </div>
       </div>
     </div>
   );
-
 }
