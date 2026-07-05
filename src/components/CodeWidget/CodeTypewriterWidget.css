@@ -1,0 +1,80 @@
+.widget-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* СДЕЛАНО: Фон стал полностью прозрачным */
+}
+
+.widget-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.widget-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.75);
+  z-index: 2;
+}
+
+.widget-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.widget-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.widget-subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+.code-box {
+  /* ИСПРАВЛЕНО: Последнее число изменено с 0.85 на 0.40 для большей прозрачности */
+  background: rgba(30, 30, 35, 0.50); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: #a9dc76;
+  text-align: left;
+  white-space: pre-wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.cursor {
+  color: #fc9867;
+  font-weight: bold;
+  animation: widget-blink 0.7s infinite;
+}
+
+@keyframes widget-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
