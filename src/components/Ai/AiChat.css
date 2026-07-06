@@ -52,18 +52,26 @@
 }
 
 .ai-button {
-  width: 100%;
+  display: block;
+  width: auto; /* Кнопка занимает место только под свой текст */
+  min-width: 140px; /* Чтобы кнопка не была слишком куцой */
   margin-top: 16px;
-  padding: 14px;
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
+  margin-left: auto; /* Магия CSS: сдвигает кнопку в крайний правый угол */
+  padding: 12px 24px; /* Увеличили боковые отступы внутри кнопки */
+  
+  /* Все ваши 3D стили остаются без изменений */
+  background: linear-gradient(to bottom, #ffffff, #f4f4f5);
+  color: #18181b;
+  border: 1px solid #e4e4e7;
+  border-bottom: 3px solid #d4d4d8; 
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
-  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.1s ease-in-out;
+  position: relative;
+  top: 0;
 }
 
 .ai-button:hover:not(:disabled) {
@@ -123,4 +131,9 @@
   margin-right: 8px;
   display: block;
   /* Убирает скрытый инлайновый зазор снизу */
+}
+
+/* Прячет подсказку сразу, как только пользователь кликнул в поле ввода */
+.ai-textarea:focus::placeholder {
+  color: transparent;
 }
