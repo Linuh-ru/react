@@ -55,21 +55,21 @@
   width: 100%;
   margin-top: 16px;
   padding: 14px;
-  background-color: #f7f5f0; /* Очень мягкий бежево-молочный оттенок */
-  color: #2b2927; /* Глубокий кофейный цвет текста */
-  border: 1px solid #e8e4dc; /* Нативная теплая граница */
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
   transition: all 0.2s ease;
 }
 
 .ai-button:hover:not(:disabled) {
-  background-color: #eeeae1; /* Благородный бежевый при наведении */
-  border-color: #ded8cb;
-  transform: none;
+  background-color: #357abd;
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.3);
+  transform: translateY(-1px);
 }
 
 .ai-button:active:not(:disabled) {

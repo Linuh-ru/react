@@ -10,7 +10,7 @@ const DEFAULT_CODE_LINES = [
   `API_HOST = "linuh.ru"
   API_PATH = "/predict"
   def predict(input_data):
-  result = perform_inference(input)`,
+  result = perform_inference`,
   `function deploy() {\n  return database.connect().then(() => "Live");\n}`
 ];
 

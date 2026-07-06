@@ -36,7 +36,7 @@ const HeroSection = () => {
 
   return (
     <div style={{
-      padding: '80px 24px 160px 24px',
+      padding: '60px 24px 70px 24px',
       backgroundColor: token.colorBgContainer,
       position: 'relative'
     }}>
