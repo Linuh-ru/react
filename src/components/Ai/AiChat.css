@@ -9,23 +9,28 @@
   box-sizing: border-box;
 }
 
+/* Обновленный класс заголовка */
 .ai-title {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0; /* Обнулили все внешние отступы */
   font-size: 24px;
+  font-weight: bold;
   color: #1a1a1a;
-  text-align: center;
+  line-height: 1; /* Убирает лишнюю высоту строки для идеального центра */
 }
 
 .ai-textarea {
   width: 100%;
   min-height: 120px;
+  /* Вернул минимальную высоту */
   padding: 14px;
   border: 1.5px solid #e0e0e0;
   border-radius: 12px;
   font-size: 16px;
-  line-height: 1.5; /* Убрали дефис, если он там был */
-  resize: vertical;
+  line-height: 1.5;
+
+  resize: none;
+  /* Треугольника все еще нет */
+  overflow-y: hidden;
   box-sizing: border-box;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -50,21 +55,21 @@
   width: 100%;
   margin-top: 16px;
   padding: 14px;
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
+  background-color: #f7f5f0; /* Очень мягкий бежево-молочный оттенок */
+  color: #2b2927; /* Глубокий кофейный цвет текста */
+  border: 1px solid #e8e4dc; /* Нативная теплая граница */
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
 }
 
 .ai-button:hover:not(:disabled) {
-  background-color: #357abd;
-  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.3);
-  transform: translateY(-1px);
+  background-color: #eeeae1; /* Благородный бежевый при наведении */
+  border-color: #ded8cb;
+  transform: none;
 }
 
 .ai-button:active:not(:disabled) {
@@ -101,4 +106,21 @@
   color: #2d3748;
   line-height: 1.6;
   white-space: pre-wrap; /* Сохраняет абзацы ответа ИИ */
+}
+
+/* Новый класс для контейнера шапки */
+.ai-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  /* Перенесли отступ сюда, чтобы отодвинуть текстовое поле */
+}
+
+/* Стили для картинки внутри шапки */
+.ai-header-logo {
+  height: 42px;
+  margin-right: 8px;
+  display: block;
+  /* Убирает скрытый инлайновый зазор снизу */
 }

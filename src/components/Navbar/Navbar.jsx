@@ -140,7 +140,7 @@ const Navbar = () => {
             }}
           />
           <a
-            href="https://github.com"
+            href="https://github.com/Linuh-ru/react"
             target="_blank"
             rel="noopener noreferrer"
             style={github3DButtonStyle}
@@ -186,7 +186,7 @@ const Navbar = () => {
         {/* Кнопка GitHub внизу шторки */}
         <div style={{ padding: '0 12px', marginTop: '20px', textAlign: 'center' }}>
           <a
-            href="https://github.com"
+            href="https://github.com/Linuh-ru/react"
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...github3DButtonStyle, width: '100%', justifyContent: 'center' }}

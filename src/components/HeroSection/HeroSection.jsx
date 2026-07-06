@@ -1,60 +1,70 @@
 import React from 'react';
 import { Row, Col, Typography, Button, theme } from 'antd';
 import "./HeroSection.css";
-import myPhoto from '/src/assets/main-photo.png'; 
-import CodeTypewriterWidget from '../CodeWidget/CodeTypewriterWidget.jsx'; // Проверьте правильность этого пути!
-import textBg from '/src/assets/text-bg.png'; // Фоновая картинка текста слева
+import myPhoto from '/src/assets/main-photo.png';
+import CodeTypewriterWidget from '../CodeWidget/CodeTypewriterWidget.jsx';
+import textBg from '/src/assets/text-bg.png';
 
 const { Title, Paragraph } = Typography;
 
 const HeroSection = () => {
   const { token } = theme.useToken();
 
+  // Добавим стили для анимации прямо в JS (или скопируйте в HeroSection.css)
+  const injectStyles = `
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px) rotateX(4deg) rotateY(-8deg); }
+      50% { transform: translateY(-15px) rotateX(6deg) rotateY(-6deg); }
+      100% { transform: translateY(0px) rotateX(4deg) rotateY(-8deg); }
+    }
+    .modern-hero-image {
+      animation: floatAnimation 6s ease-in-out infinite;
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      transform-style: preserve-3d;
+    }
+    .modern-hero-image:hover {
+      animation-play-state: paused; /* Останавливает парение при фокусе */
+      transform: translateY(-20px) scale(1.03) rotateX(0deg) rotateY(0deg) !important;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 0 50px rgba(24, 144, 255, 0.3) !important; /* Мягкое неоновое свечение бренда (AntD Blue) */
+    }
+    .image-container-3d {
+      perspective: 1000px; /* Задает глубину для 3D трансформаций */
+    }
+  `;
+
   return (
-    <div style={{ 
-      padding: '80px 24px 160px 24px', // Увеличили нижний отступ, чтобы наплывающий виджет не вылетал из секции
+    <div style={{
+      padding: '80px 24px 160px 24px',
       backgroundColor: token.colorBgContainer,
-      position: 'relative' 
+      position: 'relative'
     }}>
+      {/* Внедряем стили анимации */}
+      <style>{injectStyles}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <Row gutter={[32, 32]} align="middle">
-          
-          {/* ТЕКСТ СЛЕВА */}
-          <Col xs={24} md={12}>
-            {/* Контейнер-родитель, задающий рамки для абсолютных координат картинки */}
-            <div style={{
-              position: 'relative', // КРИТИЧЕСКИ ВАЖНО: картинка будет позиционироваться внутри этого блока
-              /*
-              padding: '30px',
-              borderRadius: token.borderRadiusLG,
-              overflow: 'hidden',   // Чтобы картинка не вылезала за скругленные края блока
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
-              border: '1px solid rgba(0, 0, 0, 0.05)',
-              backgroundColor: token.colorBgContainer // Базовый фон подложки
-              */
-            }}>
 
-              {/* КАРТИНКА С АБСОЛЮТНЫМ ПОЗИЦИОНИРОВАНИЕМ */}
+          {/* ТЕКСТ СЛЕВА */}
+          <Col xs={24} md={14}>
+            <div style={{ position: 'relative' }}>
               <img
                 src={textBg}
                 alt="Фон текста"
                 style={{
                   position: 'absolute',
-                  // --- КООРДИНАТЫ: меняйте их, чтобы двигать картинку ---
-                  top: '-90px',         // Дистанция от верхнего края текста
-                  left: '-150px',        // Дистанция от левого края текста
-                  width: '100%',      // Ширина картинки (можно задать в px, например '200px')
-                  height: '400px',     // Высота картинки (можно задать в px, например '150px')
-                  // ----------------------------------------------------
-                  /* --- ИСПРАВЛЕНО: Картинка больше не обрезается --- */
-                  objectFit: 'contain', // Картинка целиком впишется в размеры текстового поля
-                  opacity: 0.08,      // Прозрачность самой картинки (0.15 = 15% видимости, текст будет отлично читаться)
-                  zIndex: 1,          // Отправляем картинку на самый нижний слой
-                  pointerEvents: 'none' // Чтобы картинка не мешала выделять текст мышкой
+                  top: '-90px',
+                  left: '-150px',
+                  width: '100%',
+                  height: '400px',
+                  objectFit: 'contain',
+                  opacity: 0.08,
+                  zIndex: 1,
+                  pointerEvents: 'none'
                 }}
               />
 
-              {/* ТЕКСТОВЫЙ КОНТЕНТ (Обязательно zIndex: 2, чтобы быть ПОВЕРХ картинки) */}
               <div style={{ position: 'relative', zIndex: 2 }}>
                 <Typography>
                   <Title level={1} style={{ marginTop: 0, marginBottom: token.marginMD, fontWeight: 700 }}>
@@ -68,24 +78,28 @@ const HeroSection = () => {
                   </Button>
                 </Typography>
               </div>
-
             </div>
           </Col>
 
-
-          {/* ФОТО СПРАВА С ПРИВЯЗАННЫМ ВИДЖЕТОМ */}
-          <Col xs={24} md={12} style={{ textAlign: 'center', position: 'relative' }}>
-            <img 
-              src={myPhoto} 
-              alt="Главное изображение" 
-              style={{ 
-                width: '100%', 
-                maxWidth: '350px', 
-                borderRadius: token.borderRadiusLG, 
-                boxShadow: '0 12px 32px rgba(0, 0, 0, 0.06)' 
-              }} 
+          {/* ФОТО СПРАВА С ОБЪЕМНЫМ ДИЗАЙНОМ */}
+          <Col xs={24} md={10} className="image-container-3d" style={{ textAlign: 'center', position: 'relative' }}>
+            <img
+              src={myPhoto}
+              alt="Главное изображение"
+              className="modern-hero-image"
+              style={{
+                width: '100%',
+                maxWidth: '350px',
+                borderRadius: '24px', // Более современный увеличенный радиус
+                border: '1px solid rgba(255, 255, 255, 0.2)', // Тонкая "стеклянная" рамка
+                boxShadow: `
+                  0 15px 35px rgba(0, 0, 0, 0.08),
+                  0 5px 15px rgba(0, 0, 0, 0.04)
+                `, // Многослойная глубокая тень
+                cursor: 'pointer'
+              }}
             />
-            {/* Рендерим виджет. Вся логика currentText инкапсулирована внутри него и не видна для HeroSection */}
+            {/* Наплывающий виджет */}
             <CodeTypewriterWidget />
           </Col>
 
