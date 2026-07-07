@@ -47,7 +47,7 @@ const HeroSection = () => {
         <Row gutter={[32, 32]} align="middle">
 
           {/* ТЕКСТ СЛЕВА */}
-          <Col xs={24} md={14}>
+          <Col xs={24} md={12}>
             <div style={{ position: 'relative' }}>
               <img
                 src={textBg}
@@ -59,7 +59,7 @@ const HeroSection = () => {
                   width: '100%',
                   height: '400px',
                   objectFit: 'contain',
-                  opacity: 0.08,
+                  opacity: 0.15,
                   zIndex: 1,
                   pointerEvents: 'none'
                 }}
@@ -74,7 +74,7 @@ const HeroSection = () => {
                     Я главный инженер в банке ВТБ. Ниже созданный мной искусственный интеллект для Linux.
                   </Paragraph>
                   <Button type="primary" size="large">
-                    Попробовать
+                    Перейти
                   </Button>
                 </Typography>
               </div>
@@ -82,25 +82,34 @@ const HeroSection = () => {
           </Col>
 
           {/* ФОТО СПРАВА С ОБЪЕМНЫМ ДИЗАЙНОМ */}
-          <Col xs={24} md={10} className="image-container-3d" style={{ textAlign: 'center', position: 'relative' }}>
-            <img
-              src={myPhoto}
-              alt="Главное изображение"
-              className="modern-hero-image"
-              style={{
-                width: '100%',
-                maxWidth: '350px',
-                borderRadius: '24px', // Более современный увеличенный радиус
-                border: '1px solid rgba(255, 255, 255, 0.2)', // Тонкая "стеклянная" рамка
-                boxShadow: `
-                  0 15px 35px rgba(0, 0, 0, 0.08),
-                  0 5px 15px rgba(0, 0, 0, 0.04)
-                `, // Многослойная глубокая тень
-                cursor: 'pointer'
-              }}
-            />
-            {/* Наплывающий виджет */}
-            <CodeTypewriterWidget />
+          <Col
+            xs={24}
+            md={12}
+            className="image-container-3d"
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end', // На десктопах прижмет к правому краю
+              position: 'relative',
+              paddingRight: '31px' //отступ справа
+            }}
+          >
+            <div style={{ width: '100%', maxWidth: '350px', textAlign: 'center' }}>
+              {/* Оставили обертку для корректной работы виджета и центрирования на мобилках */}
+              <img
+                src={myPhoto}
+                alt="Главное изображение"
+                className="modern-hero-image"
+                style={{
+                  width: '100%',
+                  borderRadius: '24px',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.08), 0 5px 15px rgba(0,0,0,0.04)',
+                  cursor: 'pointer'
+                }}
+              />
+              {/* Наплывающий виджет */}
+              <CodeTypewriterWidget />
+            </div>
           </Col>
 
         </Row>
